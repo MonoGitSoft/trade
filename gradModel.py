@@ -28,14 +28,14 @@ iter = 1
 file_location = 'data/1.csv'
 
 
-startDate = {"year": 2017, "week": 1}
+startDate = {"year": 2016, "week": 1}
 instrument = 'EURUSD'
 
 
 data = ld.load(ld.Interval.HOURE, instrument, startDate, 50)
 
 candles = candle.Candles(data)
-candles.calc_gradients([3,4,5,6,7,8,9,10,11])
+candles.calc_gradients([3,4,5,7,9,11])
 candles.calc_sma_seq([3,4,5,7,9,11])
 candles.norm_by_column()
 candles.norm_by_column_grad()
@@ -49,7 +49,7 @@ dense_lstm_net = [
 
 dense_net = [
     dict(type='dense', size=32),
-    dict(type='dense', size=64),
+    dict(type='dense', size=32),
     dict(type='dense', size=16)
 ]
 
@@ -61,7 +61,7 @@ network = dense_lstm_net
 agent = PPOAgent(
     states=env.states,
     actions=env.actions,
-    network=dense_net,
+    network=dense_lstm_net,
     update_mode=dict(
         unit='episodes',
         batch_size=30
@@ -69,13 +69,18 @@ agent = PPOAgent(
     memory = dict(
         type='latest',
         include_next_states=False,
-        capacity=( 164 * 30 * 50)
+        capacity=( 164 * 30 * 30)
     ),
     step_optimizer=dict(type='adam', learning_rate=1e-3)
 )
 
-agent.restore_model(directory = 'forex_models_gradient_2')
+agent.restore_model(directory = 'traning',file='forex_agent_sma_lstm_15week_train_-1817639')
 
+agent.memory = memory = dict(
+        type='latest',
+        include_next_states=False,
+        capacity=( 164 * 30 * 50)
+    )
 
 
 # Create the runner
@@ -101,7 +106,7 @@ def episode_finished(r):
 
     if(iter == 50):
         iter = 0
-        agent.save_model('forex_models_gradient_2/forex_agent_sma_lstm_15week_train_')
+        agent.save_model('traning/forex_agent_sma_lstm_15week_train_')
         modelSaves = modelSaves + 1
     else:
         iter = iter + 1

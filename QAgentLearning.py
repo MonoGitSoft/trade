@@ -12,34 +12,20 @@ import json
 iter = 1
 
 file_location = 'data/1.csv'
-from tensorforce.agents import PPOAgent
-from tensorforce.execution import Runner
-from forex import FOREX
-import candle
-import numpy as np
-import FXCMDataLoader as ld
-import matplotlib as plt
-plt.use("TkAgg")
-from matplotlib import pyplot as plt
-import json
-
-iter = 1
-
-file_location = 'data/1.csv'
 
 
-startDate = {"year": 2017, "week": 1}
+startDate = {"year": 2018, "week": 1}
 instrument = 'EURUSD'
 
 
-data = ld.load(ld.Interval.HOURE, instrument, startDate, 50)
+data = ld.load(ld.Interval.MINUT, instrument, startDate, 30)
 
 candles = candle.Candles(data)
-candles.calc_gradients([3,4,5,6,7,8,9,10,11])
-candles.calc_sma_seq([3,4,5,7,9,11])
+candles.calc_gradients([5,10,20,40,80,120])
+candles.calc_sma_seq([5,10,20,40,80,120])
 candles.norm_by_column()
 candles.norm_by_column_grad()
-candles.setGradToSimulation()
+#candles.calc_sma([3,5,7,9,11,13])
 env = FOREX(candles)
 
 dense_lstm_net = [
@@ -49,7 +35,7 @@ dense_lstm_net = [
 
 dense_net = [
     dict(type='dense', size=32),
-    dict(type='dense', size=64),
+    dict(type='dense', size=32),
     dict(type='dense', size=16)
 ]
 
@@ -61,7 +47,7 @@ network = dense_lstm_net
 agent = PPOAgent(
     states=env.states,
     actions=env.actions,
-    network=dense_net,
+    network=dense_lstm_net,
     update_mode=dict(
         unit='episodes',
         batch_size=30
@@ -69,12 +55,12 @@ agent = PPOAgent(
     memory = dict(
         type='latest',
         include_next_states=False,
-        capacity=( 164 * 30 * 50)
+        capacity=( 7162 * 30 * 30)
     ),
     step_optimizer=dict(type='adam', learning_rate=1e-3)
 )
 
-agent.restore_model(directory = 'forex_models_gradient_2')
+#agent.restore_model(directory = 'traning',file='forex_agent_sma_lstm_15week_train_-41394460')
 
 
 
@@ -101,7 +87,7 @@ def episode_finished(r):
 
     if(iter == 50):
         iter = 0
-        agent.save_model('forex_models_gradient_2/forex_agent_sma_lstm_15week_train_')
+        agent.save_model('traning/forex_agent_sma_lstm_15week_train_')
         modelSaves = modelSaves + 1
     else:
         iter = iter + 1
@@ -110,11 +96,7 @@ def episode_finished(r):
 
 
 # Start learning
-#runner.run(episodes=7000, max_episode_timesteps=(candles.candle_nums + 100), episode_finished=episode_finished)
-
-
-runner.run(episodes=1, max_episode_timesteps=(candles.candle_nums + 100), episode_finished=episode_finished, deterministic=True)
-
+runner.run(episodes=7000, max_episode_timesteps=(candles.candle_nums + 100), episode_finished=episode_finished)
 
 
 # Print statistics
@@ -128,5 +110,3 @@ print(env.pair_currency)
 print(env.base_currency)
 
 runner.close()
-
-

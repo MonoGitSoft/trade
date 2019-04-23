@@ -1,7 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="84dda68e-4773-4ccd-83f7-e5fbdca84997" name="Default Changelist" comment="" />
+    <list default="true" id="84dda68e-4773-4ccd-83f7-e5fbdca84997" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/forex_models_gradient/onlyGradDenseModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DQNAgentLstm.py" beforeDir="false" afterPath="$PROJECT_DIR$/DQNAgentLstm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FXCMDataLoader.py" beforeDir="false" afterPath="$PROJECT_DIR$/FXCMDataLoader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/candle.py" beforeDir="false" afterPath="$PROJECT_DIR$/candle.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forex.py" beforeDir="false" afterPath="$PROJECT_DIR$/forex.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forex_agent_sma/-0.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/forex_agent_sma/-0.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/forex_agent_sma/-0.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/forex_agent_sma/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/forex_agent_sma/checkpoint" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forex_models_gradient/-0.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/forex_models_gradient/-0.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/forex_models_gradient/-0.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/forex_models_gradient/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/forex_models_gradient/checkpoint" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forex_models_gradient_2/-0.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/forex_models_gradient_2/-0.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/forex_models_gradient_2/-0.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/forex_models_gradient_2/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/forex_models_gradient_2/checkpoint" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fxcm.py" beforeDir="false" afterPath="$PROJECT_DIR$/fxcm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lstmModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/lstmModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tensorforce_financial.py" beforeDir="false" afterPath="$PROJECT_DIR$/tensorforce_financial.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,65 +34,68 @@
     <session id="-863732312">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="12" />
+          <entry key="project.closed" value="22" />
           <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.19" value="1" />
           <entry key="project.open.time.20" value="3" />
-          <entry key="project.open.time.21" value="2" />
-          <entry key="project.open.time.22" value="1" />
-          <entry key="project.open.time.23" value="1" />
-          <entry key="project.open.time.25" value="1" />
-          <entry key="project.open.time.29" value="1" />
-          <entry key="project.open.time.3" value="1" />
+          <entry key="project.open.time.21" value="3" />
+          <entry key="project.open.time.22" value="3" />
+          <entry key="project.open.time.23" value="2" />
+          <entry key="project.open.time.24" value="1" />
+          <entry key="project.open.time.25" value="4" />
+          <entry key="project.open.time.26" value="2" />
+          <entry key="project.open.time.28" value="2" />
+          <entry key="project.open.time.29" value="2" />
+          <entry key="project.open.time.3" value="2" />
           <entry key="project.open.time.31" value="1" />
+          <entry key="project.open.time.34" value="1" />
           <entry key="project.open.time.4" value="1" />
-          <entry key="project.opened" value="15" />
+          <entry key="project.open.time.5" value="1" />
+          <entry key="project.opened" value="31" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="65" />
+          <entry key="checkpoint" value="2" />
+          <entry key="json" value="8" />
+          <entry key="py" value="132" />
+          <entry key="pyi" value="1" />
           <entry key="txt" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="PLAIN_TEXT" value="2" />
-          <entry key="Python" value="65" />
+          <entry key="JSON" value="8" />
+          <entry key="PLAIN_TEXT" value="4" />
+          <entry key="Python" value="132" />
+          <entry key="PythonStub" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="Python Console" value="127" />
-          <entry key="py" value="10980" />
+          <entry key="Python Console" value="174" />
+          <entry key="json" value="162" />
+          <entry key="py" value="16702" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="11107" />
+          <entry key="JSON" value="162" />
+          <entry key="Python" value="16876" />
         </counts>
       </usages-collector>
     </session>
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="untitled4" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/xdgfskljdfskljdfs.py">
+        <entry file="file://$PROJECT_DIR$/gradModel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="9" column="42" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
-              <folding>
-                <element signature="e#1#24#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/tensorforce_financial.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="34" column="19" selection-start-line="34" selection-start-column="6" selection-end-line="34" selection-end-column="19" />
+            <state relative-caret-position="264">
+              <caret line="38" column="36" selection-start-line="38" selection-start-column="36" selection-end-line="40" selection-end-column="29" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -79,28 +104,65 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/tensorforce/agents/ppo_agent.py">
+        <entry file="file://$PROJECT_DIR$/gradDenseModel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1638">
-              <caret line="34" column="31" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
+            <state relative-caret-position="340">
+              <caret line="124" lean-forward="true" selection-start-line="124" selection-end-line="124" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/tensorforce/agents/agent.py">
+        <entry file="file://$PROJECT_DIR$/forex_models_gradient/onlyGradDenseModel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="250" column="42" lean-forward="true" selection-start-line="250" selection-start-column="42" selection-end-line="250" selection-end-column="97" />
+            <state relative-caret-position="-1011">
+              <caret line="41" column="27" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="27" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/earlyStopCheck.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="69">
+              <caret line="113" column="19" selection-start-line="113" selection-start-column="19" selection-end-line="113" selection-end-column="19" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/.local/lib/python3.6/site-packages/tensorflow/python/client/session.py">
+        <entry file="file://$USER_HOME$/.PyCharmCE2018.2/system/python_stubs/-1125519274/_io.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="876" selection-start-line="876" selection-end-line="876" />
+            <state relative-caret-position="156">
+              <caret line="820" column="8" selection-start-line="820" selection-start-column="8" selection-end-line="820" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/candle.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="118">
+              <caret line="56" column="25" selection-start-line="56" selection-start-column="13" selection-end-line="56" selection-end-column="25" />
+              <folding>
+                <element signature="e#0#22#0" expanded="true" />
+                <marker date="1555949040757" expanded="true" signature="580:581" ph="..." />
+                <marker date="1555949040757" expanded="true" signature="1395:1401" ph="..." />
+                <marker date="1555949040757" expanded="true" signature="1612:1666" ph="..." />
+                <marker date="1555949040757" expanded="true" signature="1696:2522" ph="..." />
+                <marker date="1555949040757" expanded="true" signature="2171:2177" ph="..." />
+                <marker date="1555949040757" expanded="true" signature="2516:2522" ph="..." />
+                <marker date="1555949040757" expanded="true" signature="3047:3889" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -108,8 +170,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/forex.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="121" column="110" selection-start-line="121" selection-start-column="110" selection-end-line="121" selection-end-column="110" />
+            <state relative-caret-position="130">
+              <caret line="100" column="66" selection-start-line="100" selection-start-column="45" selection-end-line="100" selection-end-column="66" />
               <folding>
                 <element signature="e#560#598#0" expanded="true" />
               </folding>
@@ -118,10 +180,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/QAgentLearning.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="54">
+              <caret line="42" column="22" lean-forward="true" selection-start-line="42" selection-start-column="22" selection-end-line="42" selection-end-column="22" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fxcm.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="36" selection-start-line="36" selection-end-line="36" />
+            <state relative-caret-position="75">
+              <caret line="22" selection-start-line="22" selection-end-line="22" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -130,25 +204,13 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/candle.py">
+        <entry file="file://$PROJECT_DIR$/testForex.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="39" column="21" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="21" />
+            <state relative-caret-position="435">
+              <caret line="29" column="42" selection-start-line="29" selection-start-column="42" selection-end-line="29" selection-end-column="42" />
               <folding>
-                <element signature="e#0#22#0" expanded="true" />
-                <marker date="1548707963140" expanded="true" signature="580:585" ph="..." />
-                <marker date="1548707963140" expanded="true" signature="1512:1957" ph="..." />
-                <marker date="1548707963140" expanded="true" signature="1951:1957" ph="..." />
+                <element signature="e#0#50#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/.local/lib/python3.6/site-packages/numpy/linalg/linalg.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="31530">
-              <caret line="2102" column="4" selection-start-line="2102" selection-start-column="4" selection-end-line="2102" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -164,40 +226,46 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>self.current_state</find>
-      <find>sanity_check_actions</find>
-      <find>is_terminal</find>
-      <find>current_state</find>
-      <find>step_optimizer</find>
-      <find>data</find>
-      <find>get_candle</find>
-      <find>epsilon</find>
-      <find>exploration</find>
-      <find>EpsilonAnneal</find>
-      <find>actions_exploration</find>
-      <find>get_gradients</find>
+      <find>conv2d</find>
+      <find>PPOAgent</find>
+      <find>batch</find>
+      <find>tensorforce.models.Model</find>
+      <find>setup_saver</find>
+      <find>setup_sa</find>
+      <find>setup_</find>
       <find>forex_current_state</find>
-      <find>cur_distribution</find>
-      <find>sell_price</find>
-      <find>network</find>
-      <find>gradient_linreg_slidewindow</find>
-      <find>get_sma</find>
+      <find>tf.train.Saver</find>
       <find>update_mode</find>
-      <find>batc</find>
-      <find>rese</find>
-      <find>core.baselines</find>
-      <find>canldeIter</find>
-      <find>batch_size</find>
+      <find>deterministic</find>
       <find>create_current_state</find>
-      <find>self.memory</find>
-      <find>optimization_steps</find>
-      <find>multi_step</find>
-      <find>load_model</find>
-      <find>save</find>
+      <find>saver</find>
+      <find>get_</find>
+      <find>model.py</find>
+      <find>max_to_keep</find>
+      <find>critic_embedding_network</find>
+      <find>critic_network_spec</find>
+      <find>critic_network</find>
+      <find>DDPGCriticNetwork</find>
+      <find>baseline</find>
+      <find>size_t0</find>
+      <find>baseline_optimizer</find>
+      <find>episode_rewards</find>
+      <find>SingularMonitoredSession</find>
+      <find>monitored_session</find>
+      <find>act</find>
+      <find>monitored_session</find>
+      <find>def act</find>
+      <find>plt</find>
     </findStrings>
     <replaceStrings>
       <replace />
     </replaceStrings>
+    <dirStrings>
+      <dir>$USER_HOME$/anaconda3/lib/python3.6/site-packages/itsdangerous-1.1.0.dist-info</dir>
+    </dirStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -209,19 +277,36 @@
         <option value="$PROJECT_DIR$/gradients.py" />
         <option value="$USER_HOME$/anaconda3/lib/python3.6/site-packages/tensorforce/agents/learning_agent.py" />
         <option value="$USER_HOME$/anaconda3/lib/python3.6/site-packages/tensorforce/agents/ppo_agent.py" />
-        <option value="$PROJECT_DIR$/fxcm.py" />
-        <option value="$PROJECT_DIR$/candle.py" />
-        <option value="$PROJECT_DIR$/forex.py" />
+        <option value="$PROJECT_DIR$/TimeSeriesDataLoader.py" />
+        <option value="$PROJECT_DIR$/forex_models_gradient_2/FXCMDataLoader.py" />
+        <option value="$PROJECT_DIR$/FXCMDataLoader.py" />
+        <option value="$PROJECT_DIR$/DQNAgentLstm.py" />
+        <option value="$USER_HOME$/anaconda3/lib/python3.6/site-packages/tensorforce/models/dpg_target_model.py" />
         <option value="$PROJECT_DIR$/tensorforce_financial.py" />
+        <option value="$PROJECT_DIR$/configs/critic_embedding_network.json" />
+        <option value="$PROJECT_DIR$/configs/ppo.json" />
+        <option value="$PROJECT_DIR$/configs/ddpg.json" />
+        <option value="$PROJECT_DIR$/forex.py" />
+        <option value="$PROJECT_DIR$/fxcm.py" />
+        <option value="$PROJECT_DIR$/QAgentLearning.py" />
+        <option value="$PROJECT_DIR$/candle.py" />
+        <option value="$PROJECT_DIR$/lstmModel.py" />
+        <option value="$PROJECT_DIR$/testForex.py" />
+        <option value="$USER_HOME$/anaconda3/lib/python3.6/site-packages/tensorforce/models/model.py" />
+        <option value="$PROJECT_DIR$/gradModel.py" />
+        <option value="$PROJECT_DIR$/gradDenseModel.py" />
+        <option value="$PROJECT_DIR$/forex_models_gradient/onlyGradDenseModel.py" />
+        <option value="$PROJECT_DIR$/earlyStopCheck.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="67" />
     <option name="y" value="25" />
-    <option name="width" value="927" />
-    <option name="height" value="1055" />
+    <option name="width" value="917" />
+    <option name="height" value="789" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -237,6 +322,11 @@
             </path>
             <path>
               <item name="untitled4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="untitled4" type="462c0819:PsiDirectoryNode" />
+              <item name="forex_models_gradient" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="untitled4" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
             <path>
@@ -248,30 +338,7 @@
               <item name="untitled4" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
               <item name="&lt; Python 3.6 (untitled4) &gt;" type="70bed36:NamedLibraryElementNode" />
-              <item name="python3.6" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="untitled4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="&lt; Python 3.6 (untitled4) &gt;" type="70bed36:NamedLibraryElementNode" />
-              <item name="python3.6" type="462c0819:PsiDirectoryNode" />
               <item name="site-packages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="untitled4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="&lt; Python 3.6 (untitled4) &gt;" type="70bed36:NamedLibraryElementNode" />
-              <item name="python3.6" type="462c0819:PsiDirectoryNode" />
-              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
-              <item name="mnist" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="untitled4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="&lt; Python 3.6 (untitled4) &gt;" type="70bed36:NamedLibraryElementNode" />
-              <item name="python3.6" type="462c0819:PsiDirectoryNode" />
-              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
-              <item name="mnist-0.2.2-py2.7.egg-info" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -284,6 +351,9 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
@@ -300,8 +370,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.tensorforce_financial">
-    <configuration name="convnet" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.earlyStopCheck">
+    <configuration name="earlyStopCheck" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="untitled4" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -313,7 +383,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convnet.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/earlyStopCheck.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -322,7 +392,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="fxcm" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="gradDenseModel" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="untitled4" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -334,7 +404,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/fxcm.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/gradDenseModel.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -343,7 +413,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="tensorforce_financial" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="gradModel" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="untitled4" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -355,7 +425,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tensorforce_financial.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/gradModel.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -364,7 +434,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="xdgfskljdfskljdfs" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="lstmModel" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="untitled4" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -376,7 +446,28 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/xdgfskljdfskljdfs.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lstmModel.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="testForex" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="untitled4" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/testForex.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -386,17 +477,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.xdgfskljdfskljdfs" />
-      <item itemvalue="Python.convnet" />
-      <item itemvalue="Python.fxcm" />
-      <item itemvalue="Python.tensorforce_financial" />
+      <item itemvalue="Python.lstmModel" />
+      <item itemvalue="Python.gradModel" />
+      <item itemvalue="Python.testForex" />
+      <item itemvalue="Python.gradDenseModel" />
+      <item itemvalue="Python.earlyStopCheck" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.tensorforce_financial" />
-        <item itemvalue="Python.fxcm" />
-        <item itemvalue="Python.xdgfskljdfskljdfs" />
-        <item itemvalue="Python.convnet" />
+        <item itemvalue="Python.earlyStopCheck" />
+        <item itemvalue="Python.gradDenseModel" />
+        <item itemvalue="Python.gradModel" />
+        <item itemvalue="Python.testForex" />
+        <item itemvalue="Python.lstmModel" />
       </list>
     </recent_temporary>
   </component>
@@ -426,354 +519,391 @@
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10928962" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23770492" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info id="Favorites" order="2" weight="0.3295082" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32901832" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49945354" weight="0.46062568" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.399137" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32864866" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49945354" visible="true" weight="0.46054053" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39891893" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49945354" weight="0.32901832" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49945354" weight="0.32901832" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49945354" weight="0.32864866" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50054646" side_tool="true" weight="0.32901832" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32901832" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32864866" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25235197" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/mnist/__init__.py">
+    <entry file="file://$PROJECT_DIR$/xdgfskljdfskljdfs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        <state relative-caret-position="90">
+          <caret line="9" column="42" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/mnist-0.2.2-py2.7.egg-info/requires.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/mnist-0.2.2-py2.7.egg-info/SOURCES.txt">
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/tensorforce/models/constant_model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+        <state relative-caret-position="-471" />
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/tensorforce/models/pg_prob_ratio_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="36" column="13" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/helper.py">
+    <entry file="file://$USER_HOME$/.local/lib/python3.6/site-packages/numpy/linalg/linalg.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
+        <state relative-caret-position="536">
+          <caret line="2102" column="4" selection-start-line="2102" selection-start-column="4" selection-end-line="2102" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/mnist/packer.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/mnist/loader.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="705">
-          <caret line="49" column="29" selection-start-line="49" selection-start-column="29" selection-end-line="49" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/numba/typing/npydecl.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="1010" column="29" selection-start-line="1010" selection-start-column="13" selection-end-line="1010" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/convnet.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.local/lib/python3.6/site-packages/tensorflow/examples/tutorials/mnist/input_data.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/tornado/test/auth_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="655" column="8" selection-start-line="655" selection-start-column="8" selection-end-line="655" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/nose/ext/dtcompat.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23295">
-          <caret line="1558" column="8" selection-start-line="1558" selection-start-column="8" selection-end-line="1558" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/PIL/MicImagePlugin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="23" column="8" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.local/lib/python3.6/site-packages/tensorflow/contrib/eager/python/examples/rnn_ptb/rnn_ptb.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3255">
-          <caret line="230" column="4" selection-start-line="230" selection-start-column="4" selection-end-line="230" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/statsmodels/sandbox/distributions/otherdist.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="231" column="8" selection-start-line="231" selection-start-column="8" selection-end-line="231" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/TimeSeriesDataLoader.py" />
     <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/pandas/io/parsers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9630">
-          <caret line="685" column="33" selection-start-line="685" selection-start-column="20" selection-end-line="685" selection-end-column="33" />
+        <state relative-caret-position="103">
+          <caret line="685" column="19" selection-start-line="685" selection-start-column="11" selection-end-line="685" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.local/lib/python3.6/site-packages/tensorflow/contrib/learn/python/learn/datasets/mnist.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4050">
-          <caret line="283" column="11" selection-start-line="283" selection-start-column="11" selection-end-line="283" selection-end-column="11" />
-        </state>
-      </provider>
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/pandas/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$USER_HOME$/.local/lib/python3.6/site-packages/tensorflow/contrib/learn/python/learn/datasets/base.py">
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/boto/sts/credentials.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="41" column="47" selection-start-line="41" selection-start-column="47" selection-end-line="41" selection-end-column="54" />
+        <state relative-caret-position="336">
+          <caret line="104" column="8" selection-start-line="104" selection-start-column="8" selection-end-line="104" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/loader.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1785">
-          <caret line="123" column="21" selection-start-line="123" selection-start-column="8" selection-end-line="123" selection-end-column="21" />
+        <state relative-caret-position="1935">
+          <caret line="133" column="16" selection-start-line="133" selection-start-column="16" selection-end-line="133" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/collections/__init__.py">
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/2and3/datetime.pyi">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6495">
-          <caret line="434" column="80" selection-start-line="434" selection-start-column="80" selection-end-line="434" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/tensorforce/tests/test_model_save_restore.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3420">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/tensorforce/contrib/remote_environment.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="16" column="23" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/tensorforce/environments/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$USER_HOME$/.PyCharmCE2018.2/system/python_stubs/-1125519274/numpy/core/multiarray.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="5708" column="4" selection-start-line="5708" selection-start-column="4" selection-end-line="5708" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/tensorforce/execution/base_runner.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="508">
-          <caret line="37" column="8" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/tensorforce/contrib/ale.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="118" column="8" lean-forward="true" selection-start-line="118" selection-start-column="8" selection-end-line="118" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/tensorforce/contrib/game_2048.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="53" selection-start-line="53" selection-end-line="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.PyCharmCE2018.2/system/python_stubs/-1125519274/builtins.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="426">
-          <caret line="811" column="8" selection-start-line="811" selection-start-column="8" selection-end-line="811" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/tensorforce/environments/environment.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/tensorforce/contrib/sanity_check_specs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="70" column="38" selection-start-line="70" selection-start-column="38" selection-end-line="70" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.local/lib/python3.6/site-packages/numpy/lib/function_base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="4937" column="3" lean-forward="true" selection-start-line="4937" selection-start-column="3" selection-end-line="4937" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/tensorforce/agents/ddpg_agent.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="29" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/tensorforce/core/explorations/epsilon_anneal.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="21" column="6" selection-start-line="21" selection-start-column="6" selection-end-line="21" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/tensorforce/agents/dqn_agent.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-285">
-          <caret line="23" column="14" selection-start-line="23" selection-start-column="6" selection-end-line="23" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gradients.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="33" column="36" selection-start-line="33" selection-start-column="36" selection-end-line="33" selection-end-column="36" />
+        <state relative-caret-position="960">
+          <caret line="69" selection-start-line="69" selection-end-line="69" />
         </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/tensorforce/execution/runner.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="87" selection-start-line="87" selection-end-line="87" />
+        <state relative-caret-position="345">
+          <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/tensorforce/models/model.py">
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/tensorforce/core/networks/layer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18045">
-          <caret line="1216" column="74" selection-start-line="1216" selection-start-column="74" selection-end-line="1216" selection-end-column="74" />
+        <state relative-caret-position="2169">
+          <caret line="1051" column="55" selection-start-line="1051" selection-start-column="12" selection-end-line="1051" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/tensorforce/models/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="40" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.local/lib/python3.6/site-packages/tensorflow/python/client/session.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="439">
+          <caret line="876" selection-start-line="876" selection-end-line="876" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DQNAgentLstm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/forex_agent_sma_lstm_1week_train_1054/checkpoint" />
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/tensorforce/agents/dqn_agent.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1065">
+          <caret line="76" column="31" selection-start-line="76" selection-start-column="31" selection-end-line="76" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/gensim/corpora/sharded_corpus.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="471">
+          <caret line="749" column="8" selection-start-line="749" selection-start-column="8" selection-end-line="749" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.local/lib/python3.6/site-packages/tensorflow/python/keras/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="48" column="12" selection-start-line="48" selection-start-column="12" selection-end-line="48" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/tensorforce/agents/learning_agent.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="50" column="21" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="21" />
+        <state relative-caret-position="270">
+          <caret line="26" column="6" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/json/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="273" column="4" selection-start-line="273" selection-start-column="4" selection-end-line="273" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/tensorforce/models/dpg_target_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="187" column="40" selection-start-line="187" selection-start-column="40" selection-end-line="187" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/tensorforce/core/baselines/baseline.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1776" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FXCMDataLoader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configs/critic_embedding_network.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="59" column="9" selection-start-line="59" selection-start-column="9" selection-end-line="59" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/tensorforce/agents/ddpg_agent.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="85" column="44" selection-start-line="85" selection-start-column="35" selection-end-line="85" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorforce_financial.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/tensorforce/agents/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-225" />
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/tensorforce/util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="302" column="24" selection-start-line="302" selection-start-column="24" selection-end-line="302" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.local/lib/python3.6/site-packages/tensorflow/python/training/saver.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="1757" column="7" selection-start-line="1757" selection-start-column="7" selection-end-line="1757" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configs/ppo.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/tensorforce/execution/base_runner.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="46" column="28" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.local/lib/python3.6/site-packages/tensorflow/python/training/monitored_session.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="1134" selection-start-line="1134" selection-end-line="1134" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.local/lib/python3.6/site-packages/tensorflow/python/framework/ops.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="516">
+          <caret line="3154" selection-start-line="3154" selection-end-line="3154" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/tensorforce/agents/ppo_agent.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="113" column="25" selection-start-line="113" selection-start-column="11" selection-end-line="113" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configs/ddpg.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="32" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2018.2/system/python_stubs/-1125519274/math.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4425">
+          <caret line="295" column="4" selection-start-line="295" selection-start-column="4" selection-end-line="295" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lstmModel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="684">
+          <caret line="63" column="27" selection-start-line="63" selection-start-column="27" selection-end-line="63" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/forex_models_gradient_2/checkpoint">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/tensorforce/models/model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="1352" column="41" lean-forward="true" selection-start-line="1352" selection-start-column="41" selection-end-line="1352" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/tensorforce/agents/agent.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="103" column="11" selection-start-line="103" selection-start-column="4" selection-end-line="103" selection-end-column="11" />
+          <folding>
+            <element signature="e#680#718#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2018.2/system/python_stubs/-1125519274/_io.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="820" column="8" selection-start-line="820" selection-start-column="8" selection-end-line="820" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QAgentLearning.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="42" column="22" lean-forward="true" selection-start-line="42" selection-start-column="22" selection-end-line="42" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/fxcm.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
+        <state relative-caret-position="75">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/candle.py">
+    <entry file="file://$PROJECT_DIR$/testForex.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="39" column="21" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="21" />
+        <state relative-caret-position="435">
+          <caret line="29" column="42" selection-start-line="29" selection-start-column="42" selection-end-line="29" selection-end-column="42" />
           <folding>
-            <element signature="e#0#22#0" expanded="true" />
-            <marker date="1548707963140" expanded="true" signature="580:585" ph="..." />
-            <marker date="1548707963140" expanded="true" signature="1512:1957" ph="..." />
-            <marker date="1548707963140" expanded="true" signature="1951:1957" ph="..." />
+            <element signature="e#0#50#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.local/lib/python3.6/site-packages/numpy/linalg/linalg.py">
+    <entry file="file://$PROJECT_DIR$/candle.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="31530">
-          <caret line="2102" column="4" selection-start-line="2102" selection-start-column="4" selection-end-line="2102" selection-end-column="4" />
+        <state relative-caret-position="118">
+          <caret line="56" column="25" selection-start-line="56" selection-start-column="13" selection-end-line="56" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+            <marker date="1555949040757" expanded="true" signature="580:581" ph="..." />
+            <marker date="1555949040757" expanded="true" signature="1395:1401" ph="..." />
+            <marker date="1555949040757" expanded="true" signature="1612:1666" ph="..." />
+            <marker date="1555949040757" expanded="true" signature="1696:2522" ph="..." />
+            <marker date="1555949040757" expanded="true" signature="2171:2177" ph="..." />
+            <marker date="1555949040757" expanded="true" signature="2516:2522" ph="..." />
+            <marker date="1555949040757" expanded="true" signature="3047:3889" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/forex.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="121" column="110" selection-start-line="121" selection-start-column="110" selection-end-line="121" selection-end-column="110" />
+        <state relative-caret-position="130">
+          <caret line="100" column="66" selection-start-line="100" selection-start-column="45" selection-end-line="100" selection-end-column="66" />
           <folding>
             <element signature="e#560#598#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/tensorforce/agents/ppo_agent.py">
+    <entry file="file://$PROJECT_DIR$/gradModel.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1638">
-          <caret line="34" column="31" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.local/lib/python3.6/site-packages/tensorflow/python/client/session.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="876" selection-start-line="876" selection-end-line="876" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/tensorforce/agents/agent.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="250" column="42" lean-forward="true" selection-start-line="250" selection-start-column="42" selection-end-line="250" selection-end-column="97" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xdgfskljdfskljdfs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="9" column="42" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
+        <state relative-caret-position="264">
+          <caret line="38" column="36" selection-start-line="38" selection-start-column="36" selection-end-line="40" selection-end-column="29" />
           <folding>
-            <element signature="e#1#24#0" expanded="true" />
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tensorforce_financial.py">
+    <entry file="file://$PROJECT_DIR$/gradDenseModel.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="34" column="19" selection-start-line="34" selection-start-column="6" selection-end-line="34" selection-end-column="19" />
+        <state relative-caret-position="340">
+          <caret line="124" lean-forward="true" selection-start-line="124" selection-end-line="124" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/forex_models_gradient/onlyGradDenseModel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1011">
+          <caret line="41" column="27" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/earlyStopCheck.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="113" column="19" selection-start-line="113" selection-start-column="19" selection-end-line="113" selection-end-column="19" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>

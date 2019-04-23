@@ -26,9 +26,9 @@ def binomial(n, k):
         return 0
 
 class Candles:
-    def __init__(self, file_location):
-        self.data = pd.read_csv(file_location, index_col=0, parse_dates=True)
-        data = self.data
+    def __init__(self, data):
+        #self.data = pd.read_csv(file_location, index_col=0, parse_dates=True)
+        self.data = data
         self.bidOpens= data['BidOpen'].values
         self.bidCloses = data['BidClose'].values
         self.bidHighes = data['BidHigh'].values
@@ -44,13 +44,28 @@ class Candles:
         self.data_sma = []
         self.data_mix_sma_grad = []
         self.window_size = 0
+        self.data_for_sim = []
 
     def get_candle(self, iter):
         candle = self.data[iter:iter + 1].values
         return candle
 
+    def setSMAToSimulation(self):
+        self.data_for_sim = self.data_sma
+
+    def setGradToSimulation(self):
+        self.data_for_sim = self.data_gradients
+
     def get_gradients(self, iter):
         return self.data_gradients[iter,:] * (1 / LA.norm(self.data_gradients[iter,:]))
+
+    def norm_by_column(self):
+        for row in range(np.size(self.data_sma, 0)):
+            self.data_sma[row, :] = self.data_sma[row, :] * 1 / LA.norm(self.data_sma[row, :])
+
+    def norm_by_column_grad(self):
+        for row in range(np.size(self.data_gradients, 0)):
+            self.data_gradients[row, :] = self.data_gradients[row, :] * 1 / LA.norm(self.data_gradients[row, :])
 
     def get_sma(self, iter): #slide window avarage you knowwww
         return self.data_sma[iter, :] * (1 / LA.norm(self.data_sma[iter, :]))
@@ -58,7 +73,7 @@ class Candles:
     def get_mix_sma_gradients(self, iter):
         grad = self.data_gradients[iter, :]
         sma = self.data_sma[iter, :]
-        return np.append(self.data_gradients[iter, :],sma = self.data_sma[iter, :])
+        return np.append(self.data_gradients[iter, :],self.data_sma[iter, :])
 
     def calc_gradients(self, window_sizes):
         self.data_gradients = np.zeros((self.candle_nums ,len(window_sizes)), dtype=float)
@@ -66,7 +81,29 @@ class Candles:
         for win_size in window_sizes:
             result = gradient_linreg_slidewindow(self.closeMid, win_size)
             self.data_gradients[:,column] = result['gradiens']
+            self.data_gradients[:,column] = self.data_gradients[:,column] * 1 / np.sqrt(np.var(self.data_gradients[:,column]))
             column = column + 1
+
+    def calc_sma_seq(self,window_sizes):
+        self.data_sma = np.zeros((self.candle_nums, len(window_sizes)), dtype=float)
+        column = 0
+        for win_size in window_sizes:
+            result = slide_window_filter(self.closeMid, win_size)
+            self.data_sma[:, column] = result
+            column = column + 1
+
+        column = 0
+        max_column = len(window_sizes) - 1
+        tmp = np.zeros((self.candle_nums, max_column), dtype=float)
+        tmp_counter = 0
+        print(max_column)
+        for i in range(max_column):
+            tmp[:, tmp_counter] = np.subtract(self.data_sma[:, i], self.data_sma[:, i + 1])
+            tmp[:, tmp_counter] = tmp[:, tmp_counter] * 1 / np.sqrt(np.var(tmp[:, tmp_counter]))
+            a = tmp[:, tmp_counter]
+            print(np.var(a))
+            tmp_counter = tmp_counter + 1
+        self.data_sma = np.copy(tmp)
 
     def calc_sma(self, window_sizes):
         self.data_sma = np.zeros((self.candle_nums ,len(window_sizes)), dtype=float)

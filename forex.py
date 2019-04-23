@@ -16,6 +16,7 @@ from __future__ import division
 import candle
 import math
 
+
 import numpy as np
 
 
@@ -42,6 +43,7 @@ class FOREX(Environment):
         self.canldeIter = 0
         self.lastCandle = False
         self.sell_price= 0
+        self.buy_price = 0
         self.idle_punishment = 0
         self.profit = 0
         self.create_current_state()
@@ -50,21 +52,21 @@ class FOREX(Environment):
         self.lastCandle = False
 
     def sell(self):
-        self.number_of_sell += 1
         if self.base_currency == 0:
-            return 0
+            return 1
 
         self.sell_price = self.base_currency
-        self.pair_currency = self.base_currency * 1 / self.data.askOpens[self.canldeIter]
+        self.pair_currency = self.base_currency * self.data.bidOpens[self.canldeIter]
         self.base_currency = 0
         self.idle_punishment = 0
-        return 0
+        self.number_of_sell += 1
+        return 1
 
     def buy(self):
-        self.number_of_buy += 1
         if self.pair_currency == 0:
-            return 0
-        self.base_currency = self.pair_currency * self.data.bidOpens[self.canldeIter]
+            return 1
+        self.buy_price = self.pair_currency
+        self.base_currency = self.pair_currency * 1 / self.data.askOpens[self.canldeIter]
         self.pair_currency = 0
 
         self.idle_punishment = 0
@@ -72,8 +74,9 @@ class FOREX(Environment):
         if (self.base_currency/self.start_currency) < self.max_lose:
             self.lastCandle = True
 
+        self.number_of_buy += 1
 
-        profit = self.base_currency/self.sell_price - 1
+        profit = self.base_currency/self.sell_price
         return profit
 
     def __str__(self):
@@ -88,12 +91,20 @@ class FOREX(Environment):
         base_cur_norm = self.base_currency / sum_cur
 
         cur_distribution = np.array([base_cur_norm])
+        if self.base_currency == 0:
+            cur_distribution = 0.5
+        else:
+            cur_distribution = -0.5
 
-        self.forex_current_state = np.append(cur_distribution, self.data.get_sma(self.canldeIter))
+        #self.forex_current_state = np.append(self.data.get_mix_sma_gradients(self.canldeIter), cur_distribution)
 
-        #self.forex_current_state = self.data.get_sma(self.canldeIter)
+        self.forex_current_state = self.data.get_mix_sma_gradients(self.canldeIter)
 
     def reset(self):
+        print("buy sell money")
+        print(self.number_of_buy)
+        print(self.number_of_sell)
+        print(self.base_currency / self.start_currency)
         self.base_currency = self.start_currency #EUR/USD arfolyamnal az EUR a base es a eur a pair
         self.pair_currency = 0
         self.lastCandle = False
@@ -109,10 +120,10 @@ class FOREX(Environment):
 
     def execute(self, action):
         if action == 0:
-            rew = self.sell()
+            rew = math.log(self.sell())
 
         if action == 1:
-            rew = self.buy()
+            rew = math.log(self.buy())
 
         if action == 2:
             #reward nincs de még at kell gondolni (pl valamikor az a jo ha nem csinalok semmit)
@@ -120,6 +131,8 @@ class FOREX(Environment):
                 rew = math.log2((self.data.closeMid[self.canldeIter - 1] / self.data.closeMid[self.canldeIter]))
             else:
                 rew = math.log2(self.data.closeMid[self.canldeIter] / self.data.closeMid[self.canldeIter - 1])
+            rew = 0
+
 
         # Get reward and process terminal & next state.
 
@@ -128,12 +141,15 @@ class FOREX(Environment):
 
         if self.lastCandle:
             if self.pair_currency != 0:
-                rew = self.buy()
+                self.buy()
+                rew = math.log(self.base_currency/self.start_currency)
+
 
         self.create_current_state()
 
         if self.lastCandle:
             print(self.base_currency/self.start_currency)
+
 
         terminal = self.lastCandle
         state_tp1 = self.forex_current_state
