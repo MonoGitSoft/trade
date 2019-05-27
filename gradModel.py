@@ -28,18 +28,19 @@ iter = 1
 file_location = 'data/1.csv'
 
 
-startDate = {"year": 2016, "week": 1}
+startDate = {"year": 2018, "week": 1}
 instrument = 'EURUSD'
 
 
-data = ld.load(ld.Interval.HOURE, instrument, startDate, 50)
+data = ld.load(ld.Interval.HOURE, instrument, startDate, 30)
 
 candles = candle.Candles(data)
 candles.calc_gradients([3,4,5,7,9,11])
 candles.calc_sma_seq([3,4,5,7,9,11])
 candles.norm_by_column()
 candles.norm_by_column_grad()
-candles.setGradToSimulation()
+candles.setMIXToSimulation()
+
 env = FOREX(candles)
 
 dense_lstm_net = [
@@ -57,6 +58,7 @@ states = env.states,
 actions = env.actions,
 network = dense_lstm_net
 
+print(states)
 
 agent = PPOAgent(
     states=env.states,
@@ -115,10 +117,10 @@ def episode_finished(r):
 
 
 # Start learning
-#runner.run(episodes=7000, max_episode_timesteps=(candles.candle_nums + 100), episode_finished=episode_finished)
+runner.run(episodes=7000, max_episode_timesteps=(candles.candle_nums + 100), episode_finished=episode_finished)
 
 
-runner.run(episodes=1, max_episode_timesteps=(candles.candle_nums + 100), episode_finished=episode_finished, deterministic=True)
+#runner.run(episodes=1, max_episode_timesteps=(candles.candle_nums + 100), episode_finished=episode_finished, deterministic=True)
 
 
 

@@ -19,22 +19,25 @@ data.info()
 file_location  = 'data/1.csv'
 http_location = 'https://candledata.fxcorporate.com/D1/EURUSD/2017.csv.gz'
 
+#AUDCAD, AUDCHF, AUDJPY, AUDNZD, CADCHF, EURAUD,
+#EURCHF, EURGBP, EURJPY, EURUSD, GBPCHF, GBPJPY,
+#GBPNZD, GBPUSD, NZDCAD, NZDCHF, NZDJPY, NZDUSD,
+#USDCAD, USDCHF, USDJPY, AUDUSD, CADJPY, GBPCAD,
+#USDTRY, EURNZD
 
-
-
-startDate = {"year": 2018, "week": 1}
+startDate = {"year": 2012, "week": 1}
 instrument = 'EURUSD'
 
-
-data = ld.load(ld.Interval.MINUT, instrument, startDate, 10)
-
-
+data = ld.load(ld.Interval.HOURE, instrument, startDate, 54*7)
 candles = candle.Candles(data)
 
+data_brit = ld.load(ld.Interval.HOURE, 'EURGBP', startDate, 54*7)
 
-candles.calc_gradients([5, 10, 20, 40, 100])
-candles.calc_sma([360,480,600])
+cand_brit = candle.Candles(data_brit)
 
+#candles.calc_gradients([50,100,150,200])
+
+#candles.calc_sma_seq([10,30,50,70,90,110,130,150,170,190,210])
 #candles.calc_sma([3,4,5,6])
 
 #for i in list(range(2,14)):
@@ -44,12 +47,14 @@ candles.calc_sma([360,480,600])
 #plt.plot(closeAsk_y)
 
 
-candles.norm_by_column_grad()
+
 
 #for i in range(len(candles.data_gradients[0,:])):
-#    plt.plot(candles.data_gradients[:,i])
+#   plt.plot(candles.data_gradients[:,i])
 
 plt.plot(candles.closeMid)
+plt.plot(cand_brit.closeMid)
+
 
 plt.show()
 

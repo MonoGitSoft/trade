@@ -9,57 +9,58 @@ plt.use("TkAgg")
 from matplotlib import pyplot as plt
 import json
 
-startDate = {"year": 2017, "week": 1}
-instrument = 'EURUSD'
+startDate = {"year": 2015, "week": 1}
+instrument = 'EURGBP'
 
 
 
 
 
 
-traindata = ld.load(ld.Interval.HOURE, instrument, startDate, 100)
+data = ld.load(ld.Interval.HOURE, instrument, startDate, 100)
 
 
 
-candles = candle.Candles(traindata)
-candles.calc_gradients([2,3,4,5,6,7,8,9,10])
-candles.calc_sma_seq([2,3,4,5,6,7,8,9,10])
+candles = candle.Candles(data)
+#candles.calc_gradients([10,20,30,50,100,150,200,250,300])
+candles.calc_sma_seq([5,10,20,30,40,50,60,70,80,90,100,120,140,160,180,200,220,240,280,300])
 candles.norm_by_column_sma()
-candles.norm_by_column_grad()
-candles.setMIXToSimulation()
-train_env = FOREX(candles)
+candles.setSMAToSimulation()
+env = FOREX(candles)
 
 dense_lstm_net = [
     dict(type='dense', size=32),
-    dict(type='internal_lstm', size=64)
+    dict(type='internal_lstm', size=10)
 ]
 
 dense_net = [
     dict(type='dense', size=32),
     dict(type='dense', size=64),
-    dict(type='dense', size=16)
+    dict(type='dense', size=64),
+    dict(type='dense', size=32)
 ]
 
-states = train_env.states,
-actions = train_env.actions,
+states = env.states,
+actions = env.actions,
 network = dense_lstm_net
 
 
-train_agent = PPOAgent(
-    states=train_env.states,
-    actions=train_env.actions,
+agent = PPOAgent(
+    states=env.states,
+    actions=env.actions,
     network=dense_net,
     update_mode=dict(
         unit='episodes',
-        batch_size=50
+        batch_size=30
     ),
     memory = dict(
         type='latest',
         include_next_states=False,
-        capacity=( 164 * 50 * 54 * 4)
+        capacity=( 164 * 30 * 54 * 4)
     ),
-    step_optimizer=dict(type='adam', learning_rate=1e-4)
+    step_optimizer=dict(type='adam', learning_rate=1e-3)
 )
+
 
 
 
@@ -74,7 +75,7 @@ def episode_finished_train(r):
     return True
 
 
-f = open("forex_models_gradient_2/checkpoint", "r")
+f = open("longlong/checkpoint", "r")
 
 lines = f.readlines()
 
@@ -82,13 +83,15 @@ train_reward = list();
 validator_reward = list();
 
 
-for i in range(1,len(lines)-1):
+for i in range(20,len(lines)-1):
+    print(i)
     split = lines[i].split()
     model_path = split[1]
     print(model_path[1:len(model_path)-1])
     real_model_path = model_path[1:len(model_path) - 1]
-    train_agent.restore_model(directory='forex_models_gradient_2', file = real_model_path)
-    train_runner = Runner(agent=train_agent, environment=train_env)
+    print(real_model_path)
+    agent.restore_model(directory='longlong', file = real_model_path)
+    train_runner = Runner(agent=agent, environment=env)
     train_runner.run(episodes=1, max_episode_timesteps=(candles.candle_nums + 100),episode_finished=episode_finished_train, deterministic=True)
 
 

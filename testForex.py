@@ -21,15 +21,13 @@ data = ld.load(ld.Interval.HOURE, instrument, startDate, 30)
 
 candles = candle.Candles(data)
 candles.calc_sma_seq([10,20,40,80,160])
-candles.calc_gradients([5,10,20,50,100])
+candles.calc_gradients([2,3,4,5,6,7])
 
 
-plt.plot(candles.closeMid)
 
-#for i in range(len(candles.data_gradients[0,:])):
-#    plt.plot(candles.data_gradients[:,i])
-#plt.show()
-
+for i in range(len(candles.data_gradients[0,:])):
+    plt.plot(candles.data_gradients[:,i])
+plt.show()
 
 
 plt.show()

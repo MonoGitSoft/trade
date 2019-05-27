@@ -86,7 +86,6 @@ class FOREX(Environment):
         self.data = None
 
     def create_current_state(self):
-        self.canldeIter = self.canldeIter + 1
         sum_cur = self.base_currency + self.pair_currency
         base_cur_norm = self.base_currency / sum_cur
 
@@ -98,11 +97,13 @@ class FOREX(Environment):
 
         #self.forex_current_state = np.append(self.data.get_mix_sma_gradients(self.canldeIter), cur_distribution)
 
-        self.forex_current_state = self.data.get_mix_sma_gradients(self.canldeIter)
+        #self.forex_current_state = self.data.get_mix_sma_gradients(self.canldeIter)
+        self.forex_current_state = self.data.data_for_sim[self.canldeIter,:]
+        self.canldeIter = self.canldeIter + 1
 
     def reset(self):
         print("buy sell money")
-        print(self.number_of_buy)
+
         print(self.number_of_sell)
         print(self.base_currency / self.start_currency)
         self.base_currency = self.start_currency #EUR/USD arfolyamnal az EUR a base es a eur a pair
@@ -148,6 +149,8 @@ class FOREX(Environment):
         self.create_current_state()
 
         if self.lastCandle:
+            print("Last candle")
+            print(self.number_of_buy)
             print(self.base_currency/self.start_currency)
 
 

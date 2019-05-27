@@ -56,10 +56,13 @@ class Candles:
     def setGradToSimulation(self):
         self.data_for_sim = self.data_gradients
 
+    def setMIXToSimulation(self):
+        self.data_for_sim = np.append(self.data_gradients,self.data_sma,axis=1)
+
     def get_gradients(self, iter):
         return self.data_gradients[iter,:] * (1 / LA.norm(self.data_gradients[iter,:]))
 
-    def norm_by_column(self):
+    def norm_by_column_sma(self):
         for row in range(np.size(self.data_sma, 0)):
             self.data_sma[row, :] = self.data_sma[row, :] * 1 / LA.norm(self.data_sma[row, :])
 
@@ -81,7 +84,6 @@ class Candles:
         for win_size in window_sizes:
             result = gradient_linreg_slidewindow(self.closeMid, win_size)
             self.data_gradients[:,column] = result['gradiens']
-            self.data_gradients[:,column] = self.data_gradients[:,column] * 1 / np.sqrt(np.var(self.data_gradients[:,column]))
             column = column + 1
 
     def calc_sma_seq(self,window_sizes):
@@ -99,7 +101,6 @@ class Candles:
         print(max_column)
         for i in range(max_column):
             tmp[:, tmp_counter] = np.subtract(self.data_sma[:, i], self.data_sma[:, i + 1])
-            tmp[:, tmp_counter] = tmp[:, tmp_counter] * 1 / np.sqrt(np.var(tmp[:, tmp_counter]))
             a = tmp[:, tmp_counter]
             print(np.var(a))
             tmp_counter = tmp_counter + 1

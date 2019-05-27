@@ -28,19 +28,21 @@ iter = 1
 file_location = 'data/1.csv'
 
 
-startDate = {"year": 2018, "week": 1}
+startDate = {"year": 2017, "week": 1}
 instrument = 'EURUSD'
 
 
-data = ld.load(ld.Interval.HOURE, instrument, startDate, 30)
+data = ld.load(ld.Interval.HOURE, instrument, startDate, 50)
 
 candles = candle.Candles(data)
-candles.calc_gradients([3,4,5,7,9,11])
-candles.calc_sma_seq([3,4,5,7,9,11])
-candles.norm_by_column()
+candles.calc_gradients([2,3,4,5,6,7,8,9,10])
+candles.calc_sma_seq([2,3,4,5,6,7,8,9,10])
+candles.norm_by_column_sma()
 candles.norm_by_column_grad()
-candles.setSMAToSimulation()
+candles.setMIXToSimulation()
 env = FOREX(candles)
+
+
 
 dense_lstm_net = [
     dict(type='dense', size=32),
@@ -69,7 +71,7 @@ agent = PPOAgent(
     memory = dict(
         type='latest',
         include_next_states=False,
-        capacity=( 164 * 30 * 30)
+        capacity=( 164 * 50 * 30)
     ),
     step_optimizer=dict(type='adam', learning_rate=1e-3)
 )

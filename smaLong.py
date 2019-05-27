@@ -35,22 +35,22 @@ instrument = 'EURUSD'
 data = ld.load(ld.Interval.HOURE, instrument, startDate, 54*4)
 
 candles = candle.Candles(data)
-candles.calc_gradients([2,3,4,5,6,7,8,9,10])
-candles.calc_sma_seq([2,3,4,5,6,7,8,9,10])
+#candles.calc_gradients([5,10,20,30,50,100,150,200,250,300])
+candles.calc_sma_seq([5,10,20,30,40,50,60,70,80,90,100,120,140,160,180,200,220,240,280,300])
 candles.norm_by_column_sma()
-candles.norm_by_column_grad()
-candles.setMIXToSimulation()
+candles.setSMAToSimulation()
 env = FOREX(candles)
 
 dense_lstm_net = [
     dict(type='dense', size=32),
-    dict(type='internal_lstm', size=64)
+    dict(type='internal_lstm', size=10)
 ]
 
 dense_net = [
     dict(type='dense', size=32),
     dict(type='dense', size=64),
-    dict(type='dense', size=16)
+    dict(type='dense', size=64),
+    dict(type='dense', size=32)
 ]
 
 states = env.states,
@@ -64,14 +64,14 @@ agent = PPOAgent(
     network=dense_net,
     update_mode=dict(
         unit='episodes',
-        batch_size=50
+        batch_size=30
     ),
     memory = dict(
         type='latest',
         include_next_states=False,
-        capacity=( 164 * 50 * 54 * 4)
+        capacity=( 164 * 30 * 54 * 4)
     ),
-    step_optimizer=dict(type='adam', learning_rate=1e-4)
+    step_optimizer=dict(type='adam', learning_rate=1e-3)
 )
 
 #agent.restore_model(directory = 'forex_models_gradient_2')
@@ -99,9 +99,9 @@ def episode_finished(r):
     plt.pause(0.01)
 
 
-    if(iter == 100):
+    if(iter == 30):
         iter = 0
-        agent.save_model('forex_models_gradient_2/dense_mix')
+        agent.save_model('longlong/dense_mix')
         modelSaves = modelSaves + 1
     else:
         iter = iter + 1

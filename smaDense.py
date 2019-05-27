@@ -28,18 +28,15 @@ iter = 1
 file_location = 'data/1.csv'
 
 
-startDate = {"year": 2017, "week": 1}
+startDate = {"year": 2013, "week": 1}
 instrument = 'EURUSD'
 
 
-data = ld.load(ld.Interval.HOURE, instrument, startDate, 50)
+data = ld.load(ld.Interval.HOURE, instrument, startDate, 54*4)
 
 candles = candle.Candles(data)
-candles.calc_gradients([3,4,5,6,7,8,9,10,11])
-candles.calc_sma_seq([3,4,5,7,9,11])
-candles.norm_by_column()
-candles.norm_by_column_grad()
-candles.setGradToSimulation()
+candles.calc_sma([2,3,4,5,6,7,8,9,10])
+candles.setSMAToSimulation();
 env = FOREX(candles)
 
 dense_lstm_net = [
@@ -64,17 +61,17 @@ agent = PPOAgent(
     network=dense_net,
     update_mode=dict(
         unit='episodes',
-        batch_size=30
+        batch_size=35
     ),
     memory = dict(
         type='latest',
         include_next_states=False,
-        capacity=( 164 * 30 * 50)
+        capacity=( 164 * 35 * 54 * 4)
     ),
-    step_optimizer=dict(type='adam', learning_rate=1e-3)
+    step_optimizer=dict(type='adam', learning_rate=1e-4)
 )
 
-agent.restore_model(directory = 'forex_models_gradient_2')
+#agent.restore_model(directory = 'forex_models_gradient_2')
 
 
 
@@ -99,9 +96,9 @@ def episode_finished(r):
     plt.pause(0.01)
 
 
-    if(iter == 50):
+    if(iter == 51):
         iter = 0
-        agent.save_model('forex_models_gradient_2/forex_agent_sma_lstm_15week_train_')
+        agent.save_model('smaDense/dense_mix')
         modelSaves = modelSaves + 1
     else:
         iter = iter + 1
@@ -110,10 +107,9 @@ def episode_finished(r):
 
 
 # Start learning
-#runner.run(episodes=7000, max_episode_timesteps=(candles.candle_nums + 100), episode_finished=episode_finished)
+runner.run(episodes=7000, max_episode_timesteps=(candles.candle_nums + 100), episode_finished=episode_finished)
 
-
-runner.run(episodes=1, max_episode_timesteps=(candles.candle_nums + 100), episode_finished=episode_finished, deterministic=True)
+#runner.run(episodes=1, max_episode_timesteps=(candles.candle_nums + 100), episode_finished=episode_finished, deterministic=True)
 
 
 
