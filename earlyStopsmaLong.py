@@ -9,8 +9,8 @@ plt.use("TkAgg")
 from matplotlib import pyplot as plt
 import json
 
-startDate = {"year": 2015, "week": 1}
-instrument = 'EURGBP'
+startDate = {"year": 2018, "week": 1}
+instrument = 'EURUSD'
 
 
 
