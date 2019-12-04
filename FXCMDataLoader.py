@@ -15,6 +15,7 @@ http = 'https://candledata.fxcorporate.com'
 file_formate = '.csv.gz'
 
 
+
 def load(interval : Interval, instrument : str, startDate : dict, numOfSample : int) -> pd.DataFrame:
     yr = startDate['year']
     wk = startDate['week']
@@ -38,4 +39,5 @@ def load(interval : Interval, instrument : str, startDate : dict, numOfSample : 
             data = data_loaded
         else:
             data = pd.concat([data, data_loaded])
+        
     return data

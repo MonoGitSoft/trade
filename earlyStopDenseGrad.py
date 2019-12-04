@@ -9,7 +9,7 @@ plt.use("TkAgg")
 from matplotlib import pyplot as plt
 import json
 
-startDate = {"year": 2018, "week": 1}
+startDate = {"year": 2019, "week": 1}
 instrument = 'EURUSD'
 
 
@@ -17,52 +17,51 @@ instrument = 'EURUSD'
 
 
 
-traindata = ld.load(ld.Interval.HOURE, instrument, startDate, 50)
+data = ld.load(ld.Interval.HOURE, instrument, startDate, 40)
 
 
 
-candles = candle.Candles(traindata)
-candles.calc_sma([2,3,4,5,6,7,8,9,10])
-candles.setSMAToSimulation();
-train_env = FOREX(candles)
+candles = candle.Candles(data)
+#candles.calc_gradients([5,10,20,30,50,100,150,200,250,300])
 
-mid = candles.closeMid
-
-print("asdasdasd")
-print(mid[-1]/mid[0])
+intervals = [3,5,8,10,20,30,40,50,60,70,80,90,100,200,300,400,500]
+intervals[:] = [x * 60 for x in intervals]
+candles.calc_sma_seq(intervals)
+candles.norm_by_column_sma()
+candles.setSMAToSimulation()
+env = FOREX(candles)
 
 dense_lstm_net = [
     dict(type='dense', size=32),
-    dict(type='internal_lstm', size=64)
+    dict(type='internal_lstm', size=32)
 ]
 
 dense_net = [
     dict(type='dense', size=32),
     dict(type='dense', size=64),
-    dict(type='dense', size=16)
+    dict(type='dense', size=64),
+    dict(type='dense', size=32)
 ]
 
-states = train_env.states,
-actions = train_env.actions,
+states = env.states,
+actions = env.actions,
 network = dense_lstm_net
 
-
-train_agent = PPOAgent(
-    states=train_env.states,
-    actions=train_env.actions,
-    network=dense_lstm_net,
+agent = PPOAgent(
+    states=env.states,
+    actions=env.actions,
+    network=dense_net,
     update_mode=dict(
         unit='episodes',
-        batch_size=35
+        batch_size=10
     ),
     memory = dict(
         type='latest',
         include_next_states=False,
-        capacity=( 164 * 35 * 54 * 4)
+        capacity=434500
     ),
-    step_optimizer=dict(type='adam', learning_rate=1e-4)
+    step_optimizer=dict(type='adam', learning_rate=1e-3),
 )
-
 
 
 
@@ -75,21 +74,26 @@ def episode_finished_train(r):
     plt.pause(0.01)
     return True
 
-f = open("smaLSTM/checkpoint", "r")
+
+f = open("sma_lstm_fucking_big/checkpoint", "r")
 
 lines = f.readlines()
 
 train_reward = list();
 validator_reward = list();
 
-for i in range(1,60):
+
+for i in range(1,len(lines)-1):
+    print(i)
     split = lines[i].split()
     model_path = split[1]
     print(model_path[1:len(model_path)-1])
     real_model_path = model_path[1:len(model_path) - 1]
-    train_agent.restore_model(directory='smaLSTM', file = real_model_path)
-    train_runner = Runner(agent=train_agent, environment=train_env)
+    print(real_model_path)
+    agent.restore_model(directory='sma_lstm_fucking_big', file = real_model_path)
+    train_runner = Runner(agent=agent, environment=env)
     train_runner.run(episodes=1, max_episode_timesteps=(candles.candle_nums + 100),episode_finished=episode_finished_train, deterministic=True)
 
 
 
+plt.savefig("32_32_entropy_pentalty_lstm_validation_long_train.png")

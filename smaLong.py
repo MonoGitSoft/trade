@@ -28,22 +28,22 @@ iter = 1
 file_location = 'data/1.csv'
 
 
-startDate = {"year": 2013, "week": 1}
+startDate = {"year": 2012, "week": 1}
 instrument = 'EURUSD'
 
 
-data = ld.load(ld.Interval.HOURE, instrument, startDate, 54*4)
+data = ld.load(ld.Interval.HOURE, instrument, startDate, 54*7)
 
 candles = candle.Candles(data)
 #candles.calc_gradients([5,10,20,30,50,100,150,200,250,300])
-candles.calc_sma_seq([5,10,20,30,40,50,60,70,80,90,100,120,140,160,180,200,220,240,280,300])
+candles.calc_sma_seq([3,5,8,10,20,30,40,50,60,70,80,90,100,120,140,160,180,200,240,280,320,370,430,480,530,580])
 candles.norm_by_column_sma()
 candles.setSMAToSimulation()
 env = FOREX(candles)
 
 dense_lstm_net = [
     dict(type='dense', size=32),
-    dict(type='internal_lstm', size=10)
+    dict(type='internal_lstm', size=32)
 ]
 
 dense_net = [
@@ -64,17 +64,17 @@ agent = PPOAgent(
     network=dense_net,
     update_mode=dict(
         unit='episodes',
-        batch_size=30
+        batch_size=10
     ),
     memory = dict(
         type='latest',
         include_next_states=False,
-        capacity=( 164 * 30 * 54 * 4)
+        capacity=candles.candle_nums*10
     ),
-    step_optimizer=dict(type='adam', learning_rate=1e-3)
+    step_optimizer=dict(type='adam', learning_rate=1e-3),
 )
 
-#agent.restore_model(directory = 'forex_models_gradient_2')
+#agent.restore_model(directory = 'longlong')
 
 
 
@@ -99,9 +99,9 @@ def episode_finished(r):
     plt.pause(0.01)
 
 
-    if(iter == 30):
+    if(iter == 10):
         iter = 0
-        agent.save_model('longlong/dense_mix')
+        agent.save_model('sma_lstm_fucking_long/dense_mix')
         modelSaves = modelSaves + 1
     else:
         iter = iter + 1

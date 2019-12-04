@@ -28,27 +28,23 @@ iter = 1
 file_location = 'data/1.csv'
 
 
-startDate = {"year": 2017, "week": 1}
+startDate = {"year": 2018, "week": 1}
 instrument = 'EURUSD'
 
-chart_data = {"start_date": {"year": 2012, "week": 1}, "instrument" : "EURUSD", "length" : 54*2 }
+chart_data = {"start_date": {"year": 2017, "week": 5}, "instrument" : "EURUSD", "length" : 54}
 
-data = ld.load(ld.Interval.MINUT, instrument, startDate, 54*2)
+data = ld.load(ld.Interval.MINUT, instrument, startDate, 5)
 
 candles = candle.Candles(data)
 #candles.calc_gradients([5,10,20,30,50,100,150,200,250,300])
-
-intervals = [3,5,8,10,20,30,40,50,60,70,80,90,100,200,300,400,500]
-intervals[:] = [x * 60 for x in intervals]
-
-candles.calc_sma_seq(intervals)
+candles.calc_sma_seq([20,30,40,50,60,70,80,90,100,200,300,400,500,700,1000])
 candles.norm_by_column_sma()
 candles.setSMAToSimulation()
 env = FOREX(candles)
 
 dense_lstm_net = [
     dict(type='dense', size=32),
-    dict(type='internal_lstm', size=32)
+    dict(type='internal_lstm', size=64)
 ]
 
 dense_net = [
@@ -87,7 +83,7 @@ agent = PPOAgent(
     #)
 )
 
-#agent.restore_model(directory = 'sma_lstm_fucking_big')
+#agent.restore_model(directory = 'sma_lstm_minuttteee_short')
 
 # Create the runner
 runner = Runner(agent=agent, environment=env)
@@ -112,7 +108,7 @@ def episode_finished(r):
 
     if(iter == 10):
         iter = 0
-        agent.save_model('sma_lstm_fucking_big_minute/dense_mix')
+        agent.save_model('sma_lstm_minuttteee_short_mworstprofit/dense_mix')
         modelSaves = modelSaves + 1
     else:
         iter = iter + 1

@@ -1,5 +1,5 @@
 import numpy as np
-
+import math
 def lin_reg(data):
     x = np.array(range(data.size), dtype=float)
     A = np.vstack([x, np.ones(len(x))]).T
@@ -55,16 +55,18 @@ def gradient_linreg_slidewindow(data, window_size):
         if count == window_size:
             count = 0
     result = {'gradiens': np.array(gradiens)}
-    return  result
+    return result
 
 def slide_window_filter(data, window_size):
     window = np.array(np.zeros(np.int(window_size), dtype=float))
     window[:] = data[0]
     filtered = list(range(data.size))
+    deviation = list(range(data.size))
     count = 0
     for x in range(data.size):
-        window[count] =  data[x]
+        window[count] = data[x]
         filtered[x] = np.mean(window)
+        deviation[x] = math.sqrt(np.var(window))
         count = count + 1
         if count == window_size:
             count = 0

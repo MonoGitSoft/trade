@@ -42,6 +42,7 @@ class Candles:
         self.data = data
         self.data_gradients = []
         self.data_sma = []
+        self.data_sma_deviation = []
         self.data_mix_sma_grad = []
         self.window_size = 0
         self.data_for_sim = []
@@ -65,6 +66,13 @@ class Candles:
     def norm_by_column_sma(self):
         for row in range(np.size(self.data_sma, 0)):
             self.data_sma[row, :] = self.data_sma[row, :] * 1 / LA.norm(self.data_sma[row, :])
+    def norm_by_column_sma_dev(self):
+        for row in range(np.size(self.data_sma_deviation, 0)):
+            self.data_sma_deviation[row, :] = self.data_sma_deviation[row, :] * 1 / LA.norm(self.data_sma_deviation[row, :])
+
+    def norm_by_colum_candle(self):
+        for row in range(np.size(self.data_candle, 0)):
+            self.data_candle[row, :] = self.data_candle[row, :] * 1 / LA.norm(self.data_candle[row, :])
 
     def norm_by_column_grad(self):
         for row in range(np.size(self.data_gradients, 0)):
@@ -86,6 +94,10 @@ class Candles:
             self.data_gradients[:,column] = result['gradiens']
             column = column + 1
 
+    def norm_by_variance(self):
+        for row in range(np.size(self.data_sma, 0)):
+            self.data_sma[row, :] = self.data_sma[row,:] * 1 / math.sqrt(np.var(self.data_sma[row,:]))
+
     def calc_sma_seq(self,window_sizes):
         self.data_sma = np.zeros((self.candle_nums, len(window_sizes)), dtype=float)
         column = 0
@@ -106,12 +118,20 @@ class Candles:
             tmp_counter = tmp_counter + 1
         self.data_sma = np.copy(tmp)
 
+    def calc_candle_baee(self):
+        self.data_candle = np.zeros((self.candle_nums,3), dtype=float)
+        self.data_candle[:, 0] = self.bidOpens - self.bidCloses;
+        self.data_candle[:, 1] = self.bidHighes - self.bidLowes;
+        self.data_candle[:, 2] = ((self.bidHighes + self.bidLowes)-(self.bidOpens + self.bidCloses)) / 2
+
     def calc_sma(self, window_sizes):
         self.data_sma = np.zeros((self.candle_nums ,len(window_sizes)), dtype=float)
+        self.data_sma_deviation = np.zeros((self.candle_nums ,len(window_sizes)), dtype=float)
         column = 0
         for win_size in window_sizes:
-            result = slide_window_filter(self.closeMid, win_size)
+            result, deviation = slide_window_filter(self.closeMid, win_size)
             self.data_sma[:,column] = result
+            self.data_sma_deviation[:, column] = deviation
             column = column + 1
             print("asd")
 

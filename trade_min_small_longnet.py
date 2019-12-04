@@ -28,27 +28,26 @@ iter = 1
 file_location = 'data/1.csv'
 
 
-startDate = {"year": 2017, "week": 1}
+startDate = {"year": 2018, "week": 1}
 instrument = 'EURUSD'
 
-chart_data = {"start_date": {"year": 2012, "week": 1}, "instrument" : "EURUSD", "length" : 54*2 }
+chart_data = {"start_date": {"year": 2017, "week": 5}, "instrument" : "EURUSD", "length" : 54}
 
-data = ld.load(ld.Interval.MINUT, instrument, startDate, 54*2)
+data = ld.load(ld.Interval.MINUT, instrument, startDate, 3)
 
 candles = candle.Candles(data)
-#candles.calc_gradients([5,10,20,30,50,100,150,200,250,300])
 
-intervals = [3,5,8,10,20,30,40,50,60,70,80,90,100,200,300,400,500]
-intervals[:] = [x * 60 for x in intervals]
+candles.calc_sma([144, 233, 377, 610, 987])
 
-candles.calc_sma_seq(intervals)
+candles.norm_by_column_sma_dev()
 candles.norm_by_column_sma()
+
 candles.setSMAToSimulation()
 env = FOREX(candles)
 
 dense_lstm_net = [
-    dict(type='dense', size=32),
-    dict(type='internal_lstm', size=32)
+    dict(type='dense', size=16),
+    dict(type='internal_lstm', size=128)
 ]
 
 dense_net = [
@@ -74,20 +73,20 @@ agent = PPOAgent(
     memory = dict(
         type='latest',
         include_next_states=False,
-        capacity=candles.candle_nums*10
+        capacity=candles.candle_nums
     ),
     step_optimizer=dict(type='adam', learning_rate=1e-3),
-    entropy_regularization=0.01,
-    likelihood_ratio_clipping=0.15,
+    #entropy_regularization=0.01,
+    #likelihood_ratio_clipping=0.15,
     #PGModel
-    #baseline_mode='states',
-    #baseline=dict(
-    #    type='mlp',
-    #    sizes=[16, 16]
-    #)
+   #baseline_mode='states',
+    baseline=dict(
+        type='mlp',
+        sizes=[16, 16]
+    )
 )
 
-#agent.restore_model(directory = 'sma_lstm_fucking_big')
+#agent.restore_model(directory = 'sma_lstm_minuttteee_short')
 
 # Create the runner
 runner = Runner(agent=agent, environment=env)
@@ -112,7 +111,7 @@ def episode_finished(r):
 
     if(iter == 10):
         iter = 0
-        agent.save_model('sma_lstm_fucking_big_minute/dense_mix')
+        agent.save_model('sma_lstm_minuttteee_short/dense_mix')
         modelSaves = modelSaves + 1
     else:
         iter = iter + 1
