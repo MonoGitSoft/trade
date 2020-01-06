@@ -36,16 +36,18 @@ instrument_1 = 'EURGBP'
 chart_data = {"start_date": {"year": 2017, "week": 5}, "instrument" : "EURUSD", "length" : 54}
 
 #data = ld.load(ld.Interval.HOURE, instrument, startDate, 54*7)
-data = ld.load_and_concat(ld.Interval.HOURE, instrument, instrument_1, startDate, 54*7)
-#data = ld.load(ld.Interval.HOURE, instrument, startDate, 54*7)
+#data = ld.load_and_concat(ld.Interval.HOURE, instrument, instrument_1, startDate, 54*7)
+data = ld.load(ld.Interval.HOURE, instrument, startDate, 54*7)
 
 candles = candle.Candles(data)
 # ez eddif
 #candles.calc_sma_seq([3,5,8,10,20,30,40,50,60,70,80,90,100,120,140,160,180,200,240,280,320,370,430,480,530,580,630,680,730,780,830,880])
 #candles.calc_sma_seq([3,5,8,10,20,30,40,50,60,70,80,90,100,120,140,160,180,200,240,280])
 
-sma_intervals = list(range(3,3*5,3)) + list(range(25,10*35,10))
+sma_intervals = list(range(3,3*5 + 1,3)) + list(range(25,10*35,10))
 
+print("SMA Intervals")
+print(sma_intervals)
 
 candles.calc_sma_seq(sma_intervals)
 
@@ -56,10 +58,10 @@ candles.setSMAToSimulation()
 #candles.norm_ochl()
 #candles.setOCHLToSimulation()
 env = FOREX(candles)
-
 dense_lstm_net = [
-    dict(type='internal_lstm', size=32) #dropout=0.4 internal_lstm
+    dict(type='internal_lstm', size=20) #dropout=0.4 internal_lstm
 ]
+
 
 dense_net = [
     dict(type='linear', size=32),
@@ -127,7 +129,7 @@ def episode_finished(r):
     if(iter == batch_size):
         iter = 0
         try:
-            agent.save_model('lstm_16_new_reward/dense_mix')
+            agent.save_model('lstm_20/dense_mix')
         except:
             return
         modelSaves = modelSaves + 1

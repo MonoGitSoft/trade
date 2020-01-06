@@ -34,7 +34,7 @@ class Candles:
         self.bidHighes = data['BidHigh'].values
         self.bidLowes = data['BidLow'].values
         self.askOpens = data['AskOpen'].values
-        self.askCloses = data['AskLow'].values
+        self.askCloses = data['AskClose'].values
         self.askHighes = data['AskHigh'].values
         self.askLowes = data['AskLow'].values
         self.closeMid = data[['AskClose','BidClose']].mean(axis = 1).values
@@ -42,6 +42,7 @@ class Candles:
         self.data = data
         self.data_gradients = []
         self.data_sma = []
+        self.data_ochl = []
         self.data_sma_deviation = []
         self.data_mix_sma_grad = []
         self.window_size = 0
@@ -53,6 +54,8 @@ class Candles:
 
     def setSMAToSimulation(self):
         self.data_for_sim = self.data_sma
+    def setOCHLToSimulation(self):
+        self.data_for_sim = self.data_ochl
 
     def setGradToSimulation(self):
         self.data_for_sim = self.data_gradients
@@ -66,6 +69,12 @@ class Candles:
     def norm_by_column_sma(self):
         for row in range(np.size(self.data_sma, 0)):
             self.data_sma[row, :] = self.data_sma[row, :] * 1 / LA.norm(self.data_sma[row, :])
+
+    def binary_norm_by_column_sma(self):
+        for row in range(np.size(self.data_sma, 0)):
+            for culomn in range(np.size(self.data_sma, 1)):
+                self.data_sma[row, culomn] = self.data_sma[row, culomn] * 1 / LA.norm(self.data_sma[row, culomn])
+
     def norm_by_column_sma_dev(self):
         for row in range(np.size(self.data_sma_deviation, 0)):
             self.data_sma_deviation[row, :] = self.data_sma_deviation[row, :] * 1 / LA.norm(self.data_sma_deviation[row, :])
@@ -93,6 +102,28 @@ class Candles:
             result = gradient_linreg_slidewindow(self.closeMid, win_size)
             self.data_gradients[:,column] = result['gradiens']
             column = column + 1
+
+    def create_ochl(self):
+        self.data_ochl = np.zeros((np.size(self.bidOpens, 0), 4), dtype=float)
+        for i in range(np.size(self.bidOpens, 0)):
+            C_O = self.bidCloses[i] - self.bidOpens[i]
+            H_MAX_C_O = self.bidHighes[i] - max(self.bidOpens[i], self.bidCloses[i])
+            MIN_C_O_L = min(self.bidOpens[i], self.bidCloses[i]) - self.bidLowes[i]
+            sign = math.copysign(1,C_O)
+            if H_MAX_C_O < 0.0 or MIN_C_O_L < 0.0:
+                print("mi a fasz H_MAX_C_O:"  + str(H_MAX_C_O))
+                print("mi a fasz MIN_C_O_L:"  + str(MIN_C_O_L))
+            self.data_ochl[i,0] = sign * H_MAX_C_O
+            self.data_ochl[i,1] = sign * C_O
+            self.data_ochl[i,2] = sign * MIN_C_O_L
+            if i == 0:
+                self.data_ochl[i, 3] = 0
+            else:
+                self.data_ochl[i,3] = self.bidOpens[i] - self.bidCloses[i - 1]
+
+    def norm_ochl(self):
+        for row in range(np.size(self.data_ochl, 0)):
+            self.data_ochl[row, :] = self.data_ochl[row,:] * 1 / LA.norm(self.data_ochl[row, :])
 
     def norm_by_variance(self):
         for row in range(np.size(self.data_sma, 0)):

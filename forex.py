@@ -40,8 +40,9 @@ class FOREX(Environment):
 
         self.data = data
         self.max_lose = 0.0
-        self.start_currency = 5000
+        self.start_currency = 1
         self.base_currency = self.start_currency #EUR/USD arfolyamnal az EUR a base es a USD a pair
+        self.start_masik = self.data.bidOpens[0] * self.base_currency
         self.pair_currency = 0
         self.canldeIter = 0
         self.lastCandle = False
@@ -59,25 +60,32 @@ class FOREX(Environment):
         self.best_trade = 0
         self.punish = 50
         self.petting = 50
+        self.profits = list()
+        self.net_money = list()
+        self.rewards = list()
+        self.profit_sum = list()
+        self.profitoo = 0.0;
 
     def sell(self):
         if self.base_currency == 0:# no currency to sell
-            return 1
+            return 0
         self.sell_price = self.base_currency
-        self.pair_currency = self.base_currency * self.data.bidOpens[self.canldeIter]
+        self.pair_currency = self.base_currency * self.data.bidOpens[self.canldeIter] # self.base_currency * self.data.bidOpens[self.canldeIter] / self.buy_price
         self.base_currency = 0
         self.idle_punishment = 0
         self.number_of_sell += 1
         if self.buy_price == 0:
-            return 1
-        profit = self.pair_currency / self.buy_price
-        return profit
+            return 0
+        #profit = self.pair_currency / self.buy_price
+        profit = self.pair_currency / self.start_masik
+
+        return profit - 1
 
     def buy(self):
         if self.pair_currency == 0:
             return 1
         self.buy_price = self.pair_currency
-        self.base_currency = self.pair_currency * 1 / self.data.askOpens[self.canldeIter]
+        self.base_currency = self.pair_currency * 1 / self.data.askOpens[self.canldeIter] # (self.pair_currency * (1 / self.data.askOpens[self.canldeIter])) / self.sell_price
         self.pair_currency = 0
 
         self.idle_punishment = 0
@@ -96,7 +104,15 @@ class FOREX(Environment):
         self.reward_mean = self.reward_mean * self.number_of_buy / (self.number_of_buy + 1) + profit/(self.number_of_buy + 1)
 
         self.number_of_buy += 1
-        return profit
+        #self.profits.append(profit)
+        #self.net_money.append(self.base_currency)
+
+        profit = self.base_currency / self.start_currency
+
+        #profit = self.base_currency / self.sell_price
+        self.profitoo = profit
+
+        return profit - 1
 
     def __str__(self):
         return 'FOREX'
@@ -115,24 +131,14 @@ class FOREX(Environment):
             cur_distribution = -0.5
 
         #self.forex_current_state = np.append(self.data.get_mix_sma_gradients(self.canldeIter), cur_distribution)
-        if self.pair_currency == 0:
-            pair_currency = self.base_currency * self.data.bidOpens[self.canldeIter]
-            if self.buy_price == 0:
-                profit = 0
-            else:
-                profit = pair_currency / self.buy_price - 1
-        else:
-            base_currency = self.pair_currency * 1 / self.data.askOpens[self.canldeIter]
-            if self.sell_price == 0:
-                profit = 0
-            else:
-                profit = base_currency / self.buy_price - 1
+        profit = self.calc_current_reward()
 
 
 
         #self.forex_current_state = self.data.get_mix_sma_gradients(self.canldeIter)
         self.forex_current_state = self.data.data_for_sim[self.canldeIter, :]
         self.forex_current_state = np.append(self.data.data_for_sim[self.canldeIter, :], cur_distribution)
+        self.forex_current_state = np.append(self.forex_current_state, profit * 50)
 
         #print("during asd profit" + str(profit))
 
@@ -145,7 +151,9 @@ class FOREX(Environment):
         print(self.number_of_sell)
         print(self.base_currency / self.start_currency)
         self.base_currency = self.start_currency #EUR/USD arfolyamnal az EUR a base es a eur a pair
+        self.start_masik = self.data.bidOpens[0] * self.base_currency
         self.pair_currency = 0
+        self.profitoo = 0.0;
         self.lastCandle = False
         self.canldeIter = 0
         self.idle_punishment = 0
@@ -163,12 +171,12 @@ class FOREX(Environment):
         return self.forex_current_state
 
     def execute(self, action):
-        rew = 0
+        reward = 0
         if action == 0:
-            rew = self.calc_rew(self.sell())
+            reward = self.calc_rew(self.sell()) * 1000
 
         if action == 1:
-            rew = self.calc_rew(self.buy())#math.log(self.buy())*10000
+            reward = self.calc_rew(self.buy()) * 1000#math.log(self.buy())*10000
 
         if action == 2:
             rew = 0
@@ -188,7 +196,9 @@ class FOREX(Environment):
             rew = self.calc_rew(rew)
             print("rew after emphasisese " + str(lofasz ) + " " + str(rew))
 
+        #self.rewards.append(self.calc_current_reward())
 
+        new_reward = self.calc_current_reward()
 
         self.create_current_state()
 
@@ -200,21 +210,28 @@ class FOREX(Environment):
             print("worst :" + str(self.worst_trade))
             print("best: " + str(self.best_trade))
 
-
         terminal = self.lastCandle
         state_tp1 = self.forex_current_state
-        return state_tp1, terminal, rew
+        if self.profitoo == 0.0:
+            rew = 0
+        else:
+            rew = self.profitoo - 1
+        return state_tp1, terminal, reward
 
     def calc_rew(self, raw):
-
-        #return math.tan(raw - 1)
-        #if raw <= 1:
-        #    return math.log(raw)
-        #else:
-        #    return math.exp(raw) - math.e
         return raw - 1
 
-
+    def calc_current_reward(self):
+        if self.pair_currency == 0:
+            pair_currency = self.base_currency * self.data.bidOpens[self.canldeIter]
+            if self.buy_price == 0:
+                profit = 0
+            else:
+                profit = pair_currency / self.buy_price - 1
+        else:
+            base_currency = self.pair_currency * 1 / self.data.askOpens[self.canldeIter]
+            profit = base_currency / self.sell_price - 1
+        return profit
 
     @property
     def states(self):

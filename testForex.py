@@ -17,20 +17,14 @@ startDate = {"year": 2018, "week": 1}
 instrument = 'EURUSD'
 
 
-data = ld.load(ld.Interval.MINUT, instrument, startDate, 1)
+data = ld.load(ld.Interval.HOURE, instrument, startDate, 1)
 
 candles = candle.Candles(data)
-candles.calc_sma([89, 144, 233])
-
-candles.norm_by_column_sma_dev()
-candles.norm_by_column_sma()
 
 #for i in range(len(candles.data_sma_deviation[0,:])):
 #    plt.plot(candles.data_sma_deviation[:,i])
 
-for i in range(len(candles.data_sma[0,:])):
-    plt.plot(candles.data_sma[:,i])
-plt.show()
-
-
+plt.plot(candles.closeMid, 'b')
+plt.plot(candles.askCloses, 'r')
+plt.plot(candles.bidCloses, 'g')
 plt.show()
